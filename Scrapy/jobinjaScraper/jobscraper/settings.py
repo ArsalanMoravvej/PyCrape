@@ -12,6 +12,9 @@ BOT_NAME = "jobscraper"
 SPIDER_MODULES = ["jobscraper.spiders"]
 NEWSPIDER_MODULE = "jobscraper.spiders"
 
+# FEEDS = {
+#     '/workspaces/133903613/for_deletion/jobinjaScraper/jobinja.json': {'format': 'json'}
+# }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "jobscraper (+http://www.yourdomain.com)"
@@ -62,9 +65,11 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "jobscraper.pipelines.JobscraperPipeline": 300,
-#}
+ITEM_PIPELINES = {
+   "jobscraper.pipelines.JobscraperPipeline": 300,
+   "jobscraper.pipelines.SaveToDatabasePipeline": 400,
+
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
